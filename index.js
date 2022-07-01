@@ -24,7 +24,13 @@ async function  run(){
               const todos = await cursor.toArray()
               res.send(todos)
          })
-       
+        //app.post todo
+         app.post('/todo' , async(req,res)=>{
+              const newTodo = req.body ;
+              const result = await todoCollection.insertOne(newTodo)
+              res.send(result)
+            })
+     
     }
     finally{
          //await client.close();
