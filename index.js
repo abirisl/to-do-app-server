@@ -30,7 +30,13 @@ async function  run(){
               const result = await todoCollection.insertOne(newTodo)
               res.send(result)
             })
-     
+     // To-do-id create 
+         app.delete('/todos/:id' , async(req,res)=>{
+              const id = req.params.id ;
+              const query = {_id: ObjectId(id)}
+              const result  = await todoCollection.deleteOne(query)
+              res.send(result)
+            })
     }
     finally{
          //await client.close();
